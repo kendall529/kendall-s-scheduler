@@ -17,22 +17,21 @@ $(document).ready(function () {
       // this being the button and then connecting to the elements with the same parent
       // specifying the element with the class of 'description' and then getting the value
       // that will be entered at a later time
-        var description = $(this).siblings('.description').val();
+        var description = $(this).siblings('textarea').val();
         console.log(description);
         var hour = $(this).parent().attr('id');
         console.log(hour);
       //
         localStorage.setItem(hour, description);
-    for(var i = 0; i < 12; i++) {
-      var timeSlot = $('#hour-' + i + ' .description');
+      });
 
-      // console.log('#hour-' + [i] + ' .description');
 
-      timeSlot.val(localStorage.getItem(hour));
+    for(var i = 9; i < 23; i++) {
+      var hour = '#hour-' + i;
+      var timeSlot = $(hour + ' .description');
+      timeSlot.val(localStorage.getItem('hour-' + i));
     }
-    });
-
-    
+      
 
   //
   // TODO: Add code to apply the past, present, or future class to each time
